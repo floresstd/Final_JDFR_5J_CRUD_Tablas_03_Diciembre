@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+  <div class="col-md-5 offset-md-4">
+    <!-- La tarjeta card -->
+
+    <div class="card"> <!-- Tarjeta -->
+      <div class="card-body">
+        <form action="/editarCategoria/" method="POST">{% csrf_token %} <!--Formulario-->
+
+          <!-- Campo de ID de la categoría (solo lectura) -->
+          <div class="form-group">
+            <input type="text" id="txtid_categoria" name="txtid_categoria" class="form-control"
+              value="{{ miscategorias.id_categoria }}" readonly required>
+          </div>
+
+          <!-- Campo para el nombre de la categoría -->
+          <div class="form-group py-3">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{ miscategorias.Nombre }}" minlength="1" maxlength="255" required>
+          </div>
+
+          <!-- Campo para la descripción de la categoría -->
+          <div class="form-group py-3">
+            <textarea id="txtdescripcion" name="txtdescripcion" class="form-control"
+              rows="4" minlength="1" maxlength="255" required>{{ miscategorias.Descripcion }}</textarea>
+          </div>
+
+          <!-- Botón de guardar -->
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form><!--Formulario-->
+      </div>
+    </div>
+
+    <!-- Fin de la tarjeta -->
+  </div><!--columna-->
+</div><!--la fila-->
+{% endblock %}
