@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+  <div class="col-md-5 offset-md-4">
+    <!-- La tarjeta card -->
+
+    <div class="card"> <!-- Tarjeta -->
+      <div class="card-body">
+        <form action="/editarOrden/" method="POST">{% csrf_token %} <!--Formulario-->
+
+          <div class="form-group">
+            <input type="text" id="txtid_orden" name="txtid_orden" class="form-control"
+              value="{{misorden.id_orden}}" readonly required>
+          </div>
+
+          <div class="form-group py-3">
+            <input type="number" id="txtid_cliente" name="txtid_cliente" class="form-control"
+              value="{{misorden.Id_cliente}}" required>
+          </div>
+
+          <div class="form-group py-3">
+            <input type="date" id="datefecha" name="datefecha" class="form-control"
+              value="{{misorden.Fecha|date:'Y-m-d'}}" required>
+          </div>
+
+          <div class="form-group py-3">
+            <input type="number" id="txtid_producto" name="txtid_producto" class="form-control"
+              value="{{misorden.Id_producto}}" required>
+          </div>
+
+          <div class="form-group py-2">
+            <input type="number" id="txtid_categoria" name="txtid_categoria" class="form-control"
+              value="{{misorden.Id_Categoria}}" required>
+          </div>
+
+          <div class="form-group py-2">
+            <input type="number" id="txtcantidad" name="txtcantidad" class="form-control"
+              value="{{misorden.Cantidad}}" min="1" required>
+          </div>
+
+          <div class="form-group py-2">
+            <input type="number" step="0.01" id="txtprecio" name="txtprecio" class="form-control"
+              value="{{misorden.Precio}}" min="0" required>
+          </div>
+
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form><!--Formulario-->
+      </div>
+    </div>
+
+    <!-- Fin la tarjeta card -->
+  </div><!--columna-->
+</div><!--la fila-->
+{% endblock %}

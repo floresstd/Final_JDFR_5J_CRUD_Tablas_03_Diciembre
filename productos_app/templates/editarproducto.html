@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+  <div class="col-md-5 offset-md-4">
+    <!-- Tarjeta card -->
+    <div class="card">
+      <div class="card-body">
+        <form action="/editarProducto/" method="POST">{% csrf_token %}
+          <!--Formulario-->
+
+          <!-- Campo ID del producto (readonly) -->
+          <div class="form-group">
+            <input type="text" id="txtid_producto" name="txtid_producto" class="form-control"
+              value="{{misproductos.id_producto}}" readonly required>
+          </div>
+
+          <!-- Campo Nombre -->
+          <div class="form-group py-3">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{misproductos.Nombre}}" minlength="3" maxlength="255" required>
+          </div>
+
+          <!-- Campo Descripción -->
+          <div class="form-group py-3">
+            <textarea id="txtdescripcion" name="txtdescripcion" class="form-control" rows="3" required>{{misproductos.Descripcion}}</textarea>
+          </div>
+
+          <!-- Campo Precio -->
+          <div class="form-group py-2">
+            <input type="number" id="txtprecio" name="txtprecio" class="form-control" step="0.01"
+              value="{{misproductos.Precio}}" required>
+          </div>
+
+          <!-- Campo Stock -->
+          <div class="form-group py-2">
+            <input type="number" id="txtstock" name="txtstock" class="form-control"
+              value="{{misproductos.Stock}}" min="0" required>
+          </div>
+
+          <!-- Botón de Guardar -->
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+        <!--Formulario-->
+      </div>
+    </div>
+    <!-- Fin tarjeta card -->
+  </div>
+  <!--columna-->
+</div>
+<!--la fila-->
+{% endblock %}

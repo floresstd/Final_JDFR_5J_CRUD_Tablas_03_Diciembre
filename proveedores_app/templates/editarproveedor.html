@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+  <div class="col-md-5 offset-md-4">
+    <!-- Tarjeta card -->
+    <div class="card">
+      <div class="card-body">
+        <form action="/editarProveedor/" method="POST">{% csrf_token %}
+          <!--Formulario-->
+
+          <!-- Campo ID del proveedor (readonly) -->
+          <div class="form-group">
+            <input type="text" id="txtid_proveedor" name="txtid_proveedor" class="form-control"
+              value="{{misproveedores.id_proveedor}}" readonly required>
+          </div>
+
+          <!-- Campo Nombre -->
+          <div class="form-group py-3">
+            <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{misproveedores.Nombre}}" minlength="3" maxlength="200" required>
+          </div>
+
+          <!-- Campo Teléfono -->
+          <div class="form-group py-3">
+            <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+              value="{{misproveedores.Telefono}}" minlength="1" maxlength="10" required>
+          </div>
+
+          <!-- Campo Email -->
+          <div class="form-group py-2">
+            <input type="email" id="txtemail" name="txtemail" class="form-control"
+              value="{{misproveedores.Email}}" required>
+          </div>
+
+          <!-- Campo Dirección -->
+          <div class="form-group py-2">
+            <textarea id="txtdireccion" name="txtdireccion" class="form-control" rows="3" required>{{misproveedores.Direccion}}</textarea>
+          </div>
+
+          <!-- Botón de Guardar -->
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+
+        </form>
+        <!--Formulario-->
+      </div>
+    </div>
+    <!-- Fin tarjeta card -->
+  </div>
+  <!--columna-->
+</div>
+<!--la fila-->
+{% endblock %}
